@@ -10,7 +10,7 @@
 
     if ($type == 'Todos') $type = '';
 
-    $query = "SELECT DISTINCT Usuario FROM Transacciones WHERE Usuario LIKE '%$user%' AND Tipo LIKE '%$type%'";
+    $query = "SELECT DISTINCT user FROM trade WHERE user LIKE '%$user%' AND type LIKE '%$type%'";
 
     $resultado = $mysqli->query($query);
 
@@ -22,7 +22,7 @@
     $resultado->data_seek(0);
     while($row = $resultado->fetch_assoc()) {
         $json[] = array(
-        $row['Usuario']
+        $row['user']
         );
     }
 

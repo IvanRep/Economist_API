@@ -12,8 +12,8 @@ $amount = str_replace(',','.',$params['amount']);
 
 $id = date('YmdHis');
 
-$mysqli->query('DELETE from Transacciones WHERE Id = $id');
-$query = "INSERT into Transacciones (Id,Tipo,Fecha,Importe,Usuario,Concepto) values ($id,'{$type}','{$date}',{$amount},'{$user}','{$concept}')";
+$mysqli->query('DELETE from trade WHERE id = $id');
+$query = "INSERT into trade (id,type,date,amount,user,concept) values ($id,'{$type}','{$date}',{$amount},'{$user}','{$concept}')";
 $resultado = $mysqli->query($query);
 
 if (!$resultado) {

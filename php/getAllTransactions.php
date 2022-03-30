@@ -13,21 +13,21 @@
     if ($filters->since == '') {
         $sinceQuery = '';
     } else {
-        $sinceQuery = "Fecha > '$filters->since' AND ";
+        $sinceQuery = "date > '$filters->since' AND ";
     }
 
     if ($filters->until == '') {
         $untilQuery = '';
     } else {
-        $untilQuery = "Fecha < '$filters->until' AND ";
+        $untilQuery = "date < '$filters->until' AND ";
     }
 
-    $query = "SELECT Id, Tipo, Fecha, Importe, Usuario, Concepto FROM Transacciones WHERE
-    Tipo LIKE '%$filters->type%' AND 
-    Importe > $filters->minimumAmount AND 
-    Importe < $filters->maximumAmount AND $sinceQuery $untilQuery
-    Usuario LIKE '%$filters->user%' AND 
-    Concepto LIKE '%$filters->concept%' 
+    $query = "SELECT id, type, date, amount, user, concept FROM trade WHERE
+    type LIKE '%$filters->type%' AND 
+    amount > $filters->minimumAmount AND 
+    amount < $filters->maximumAmount AND $sinceQuery $untilQuery
+    user LIKE '%$filters->user%' AND 
+    concept LIKE '%$filters->concept%' 
     ORDER BY $order $orderDirection";
 
     $resultado = $mysqli->query($query);
@@ -38,14 +38,14 @@
     $json = array();
     $resultado->data_seek(0);
     while($row = $resultado->fetch_assoc()) {
-        $formattedDate = date("d/m/Y/H/i/s", strtotime($row['Fecha']));
+        $formattedDate = date("d/m/Y/H/i/s", strtotime($row['date']));
         $json[] = array(
-        'id' => $row['Id'],
-        'type' => $row['Tipo'],
+        'id' => $row['id'],
+        'type' => $row['type'],
         'date' => $formattedDate,
-        'amount' => $row['Importe'],
-        'user' => $row['Usuario'],
-        'concept' => $row['Concepto'],
+        'amount' => $row['amount'],
+        'user' => $row['user'],
+        'concept' => $row['concept'],
         );
     }
 

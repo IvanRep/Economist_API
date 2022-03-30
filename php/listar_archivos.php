@@ -1,6 +1,6 @@
 <?php 
 
-chdir("../Copias_de_seguridad/");
+chdir("../backup/");
 $json = array();
 
 array_multisort(array_map('filemtime', ($files = glob("*.*"))), SORT_DESC, $files);

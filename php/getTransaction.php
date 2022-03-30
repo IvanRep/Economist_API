@@ -5,7 +5,7 @@
 
     $id = $_GET['id'];
     
-    $query = "SELECT Id,Tipo,Fecha,Importe,Usuario,Concepto FROM Transacciones WHERE ID = '$id'";
+    $query = "SELECT id,type,date,amount,user,concept FROM trade WHERE id = '$id'";
 
     $resultado = $mysqli->query($query);
 
@@ -16,14 +16,14 @@
     $json = array();
     $resultado->data_seek(0);
     while($row = $resultado->fetch_assoc()) {
-        $fechaConFormato = date("d/m/Y", strtotime($row['Fecha']));
+        $fechaConFormato = date("d/m/Y", strtotime($row['date']));
         $json = array(
-        'id' => $row['Id'],
-        'tipo' => $row['Tipo'],
+        'id' => $row['id'],
+        'tipo' => $row['type'],
         'fecha' => $fechaConFormato,
-        'importe' => $row['Importe'],
-        'usuario' => $row['Usuario'],
-        'concepto' => $row['Concepto']
+        'importe' => $row['amount'],
+        'usuario' => $row['user'],
+        'concepto' => $row['concept']
         );
     }
 

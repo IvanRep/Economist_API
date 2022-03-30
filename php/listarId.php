@@ -17,21 +17,21 @@
     if ($filters->since == '') {
         $sinceQuery = '';
     } else {
-        $sinceQuery = "Fecha > '$filters->since' AND ";
+        $sinceQuery = "date > '$filters->since' AND ";
     }
 
     if ($filters->until == '') {
         $untilQuery = '';
     } else {
-        $untilQuery = "Fecha < '$filters->until' AND ";
+        $untilQuery = "date < '$filters->until' AND ";
     }
 
-    $query = "SELECT Id FROM Transacciones WHERE
-    Tipo LIKE '%$filters->type%' AND 
-    Importe > $filters->minimumAmount AND 
-    Importe < $filters->maximumAmount AND $sinceQuery $untilQuery
-    Usuario LIKE '%$filters->user%' AND 
-    Concepto LIKE '%$filters->concept%' 
+    $query = "SELECT id FROM trade WHERE
+    type LIKE '%$filters->type%' AND 
+    amount > $filters->minimumAmount AND 
+    amount < $filters->maximumAmount AND $sinceQuery $untilQuery
+    user LIKE '%$filters->user%' AND 
+    concept LIKE '%$filters->concept%' 
     ORDER BY $order $orderDirection";
 
     $resultado = $mysqli->query($query);
@@ -43,7 +43,7 @@
     $resultado->data_seek(0);
     while($row = $resultado->fetch_assoc()) {
         $json[] = array(
-        'id' => $row['Id'],
+        'id' => $row['id'],
         );
     }
 
