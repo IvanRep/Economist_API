@@ -1,10 +1,10 @@
 
-DROP TABLE IF EXISTS `Transacciones`;
-CREATE TABLE `Transacciones` (
-  `Id` decimal(25,0) PRIMARY KEY,
-  `Tipo` varchar(20),
-  `Fecha` datetime NOT NULL,
-  `Importe` decimal(25,2) NOT NULL,
-  `Usuario` varchar(20),
-  `Concepto` varchar(100)
+DROP TABLE IF EXISTS `trade`;
+CREATE TABLE `trade` (
+  `id` decimal(25,0) PRIMARY KEY,
+  `type` varchar(20),
+  `date` datetime NOT NULL,
+  `amount` decimal(25,2) NOT NULL,
+  `user` varchar(20),
+  `concept` varchar(100)
 );

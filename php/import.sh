@@ -2,4 +2,4 @@
 
 cd /var/www/html
 
-mysql -u phpmyadmin -pbananapi phpmyadmin < ./Copias_de_seguridad/$1
+mysql -u phpmyadmin -pbananapi economist < ./backup/$1

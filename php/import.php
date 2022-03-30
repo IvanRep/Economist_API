@@ -5,9 +5,9 @@ error_reporting(E_ALL);
 include('conexion.php');
 
 $filename = $_GET['filename'];
-$backup = '/var/www/html/Copias_de_seguridad/'.$filename;
+$backup = '/var/www/html/backup/'.$filename;
 $user = 'phpmyadmin';
-$database = 'phpmyadmin';
+$database = 'economist';
 $password = 'bananapi';
 $command = "./import.sh $filename";
 $output;

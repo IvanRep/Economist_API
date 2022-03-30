@@ -12,7 +12,7 @@ $amount = str_replace(',','.',$params['amount']);
 $id = $params['id'];
 
 
-$query = "UPDATE Transacciones SET Tipo = '$type', Importe = $amount, Usuario = '$user', Concepto = '$concept', Fecha = '$date' WHERE id = $id";
+$query = "UPDATE trade SET type = '$type', amount = $amount, user = '$user', concept = '$concept', date = '$date' WHERE id = $id";
 $resultado = $mysqli->query($query);
 
 if (!$resultado) {
