@@ -2,4 +2,4 @@
 
 cd /var/www/html
 
-mysql -u phpmyadmin -pbananapi economist < ./backup/$1
+mysql -u $2 -p$3 $4 < ./backup/$1
